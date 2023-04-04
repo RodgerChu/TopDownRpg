@@ -25,7 +25,7 @@ namespace Startup.GlobalBinders
                     {
                         var metaType = meta.GetType();
                         container.Bind(metaType).FromInstance(meta);
-                    });
+                    }, container);
                 }
             }
         }

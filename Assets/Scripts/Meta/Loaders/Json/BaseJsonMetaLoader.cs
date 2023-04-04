@@ -1,4 +1,5 @@
 using System;
+using Zenject;
 
 namespace Meta.Loaders.Json
 {
@@ -7,7 +8,7 @@ namespace Meta.Loaders.Json
 
     public abstract class BaseMetaLoader
     {
-        public abstract void Load(Action<object> callback);
+        public abstract void Load(Action<object> callback, DiContainer container);
     }
     
     public abstract class BaseJsonMetaLoader: BaseMetaLoader, IJsonMetaLoader

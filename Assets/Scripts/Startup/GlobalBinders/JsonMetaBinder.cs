@@ -18,7 +18,7 @@ namespace Startup.GlobalBinders
                     loader.Load(meta =>
                     {
                         container.Bind(meta.GetType()).FromInstance(meta);
-                    });
+                    }, container);
                 }
             }
         }

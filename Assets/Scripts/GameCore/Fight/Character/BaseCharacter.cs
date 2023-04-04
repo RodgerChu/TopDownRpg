@@ -14,7 +14,8 @@ namespace GameCore.Fight.Character
         private CharacterController m_characterController;
 
         private BaseState m_currentState;
-        
+
+        public CharacterType characterType => CharacterType.Hero;
         CharacterController ICharacter.characterController => m_characterController;
         public CharacterStats characterStats { get; } = new()
         {

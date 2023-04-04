@@ -35,7 +35,7 @@ public class JsonsToProtoSerializer
                         File.Delete(filePath);
                     }
                     File.WriteAllBytes(filePath, memStream.ToArray());
-                });
+                }, null);
             }
         }
     }
