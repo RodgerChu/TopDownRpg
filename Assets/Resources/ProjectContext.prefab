@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 8270551331150312152}
   - component: {fileID: 7548565544694614649}
   - component: {fileID: 1897637624875364881}
+  - component: {fileID: 1098674507327492599}
+  - component: {fileID: 8975980321369958553}
+  - component: {fileID: -5475923770514424684}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -48,6 +51,9 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 1897637624875364881}
+  - {fileID: 8975980321369958553}
+  - {fileID: 1098674507327492599}
+  - {fileID: -5475923770514424684}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
@@ -72,5 +78,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ada775f68df268147867e73a33d705bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1098674507327492599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481404871717874587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2f0183d1205bb4aa8c9b666406f0eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8975980321369958553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481404871717874587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf2ea772a9676d54381725957b2a4429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5475923770514424684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481404871717874587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7122746e3e7c66844a8ff7696fb378e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
