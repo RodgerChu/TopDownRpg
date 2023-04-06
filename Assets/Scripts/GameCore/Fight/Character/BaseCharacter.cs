@@ -1,6 +1,7 @@
 using GameCore.Fight.AI;
 using GameCore.Fight.Character.Stats;
 using GameCore.Pooling;
+using Pathfinding;
 using UnityEngine;
 using Zenject;
 
@@ -10,13 +11,12 @@ namespace GameCore.Fight.Character
     {
         [Inject] private Pool<BaseState> m_statesPool;
 
-        [SerializeField]
-        private CharacterController m_characterController;
+        [SerializeField] private AIPath m_aiPath;
+        
 
         private BaseState m_currentState;
-
-        public CharacterType characterType => CharacterType.Hero;
-        CharacterController ICharacter.characterController => m_characterController;
+        private Transform m_cachedTransform;
+        
         public CharacterStats characterStats { get; } = new()
         {
             moveSpeed = 4f
@@ -25,6 +25,7 @@ namespace GameCore.Fight.Character
         private void Awake()
         {
             m_currentState = m_statesPool.Get<IdleState>();
+            m_cachedTransform = transform;
         }
 
         private void Update()
@@ -42,6 +43,12 @@ namespace GameCore.Fight.Character
 
             m_currentState = state;
             m_currentState.OnStateEnter(this);
+        }
+
+        public Vector2 position => m_cachedTransform.position;
+        public void MoveTo(Vector2 destination)
+        {
+            m_aiPath.destination = destination;
         }
     }
 }

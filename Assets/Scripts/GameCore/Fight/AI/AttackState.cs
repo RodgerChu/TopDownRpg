@@ -18,8 +18,8 @@ namespace GameCore.Fight.AI
 
         protected override void UpdateInternal(ICharacter character)
         {
-            var destination = m_targetEnemy.characterController.center.XY();
-            var targetVector = destination - character.characterController.transform.position.XY();
+            var destination = m_targetEnemy.position;
+            var targetVector = destination - character.position;
             if (Vector2.SqrMagnitude(targetVector) <
                 m_characterAttackRangeSqr)
             {
@@ -28,7 +28,7 @@ namespace GameCore.Fight.AI
             }
 
             
-            character.characterController.Move(destination.normalized * (character.characterStats.moveSpeed * Time.deltaTime));
+            character.MoveTo(m_targetEnemy.position);
         }
 
         public override void OnStateLeave(ICharacter character)

@@ -18,7 +18,7 @@ namespace GameCore.Fight.AI
             else
             {
                 var destination = m_squadPositionsProvider.GetPosition(character);
-                var targetVector = destination - character.characterController.transform.position.XY();
+                var targetVector = destination - character.position;
                 if (targetVector.SqrMagnitude() < 0.1f)
                 {
                     return;

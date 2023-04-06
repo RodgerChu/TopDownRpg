@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using GameCore.Fight.SkillsSystem.Abstractions;
 using UnityEngine;
+using Utils;
 using Zenject;
 
 namespace GameCore.Fight.SkillsSystem.Concrete
@@ -15,8 +16,9 @@ namespace GameCore.Fight.SkillsSystem.Concrete
             foreach (var projectile in m_projectiles)
             {
                 var projectilePosition = projectile.position;
-                var movementVector = (projectile.target.characterController.transform.position - projectilePosition).normalized;
-                projectile.position += movementVector * (dt * projectile.speed);
+                var movementVector = (projectile.target.position - projectilePosition.XY()).normalized;
+                var newPos = movementVector * (dt * projectile.speed);
+                projectile.position += new Vector3(newPos.x, newPos.y);
             }
         }
 

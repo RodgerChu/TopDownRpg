@@ -17,11 +17,11 @@ namespace GameCore.Fight.EnemiesLocator
         {
             var minDist = float.MaxValue;
             ICharacter nearestEnemy = null;
-            var center = client.characterController.center;
+            var center = client.position;
             var clientPosition = new Vector2(center.x, center.y);
             foreach (var enemy in m_enemiesInSight)
             {
-                var enemyCenter = client.characterController.center;
+                var enemyCenter = client.position;
                 var enemyPosition = new Vector2(enemyCenter.x, enemyCenter.y);
                 var distBetween = Vector2.Distance(enemyPosition, clientPosition);
                 if (distBetween < minDist)

@@ -17,7 +17,7 @@ namespace GameCore.Fight.AI
         protected override void UpdateInternal(ICharacter character)
         {
             var destination = m_destinationProvider.GetPosition(character);
-            var characterPosition = character.characterController.transform.position.XY();
+            var characterPosition = character.position;
             var targetVector = destination - characterPosition;
             if (Vector2.SqrMagnitude(targetVector) <= 0.1f)
             {
@@ -25,7 +25,7 @@ namespace GameCore.Fight.AI
             }
             else
             {
-                character.characterController.Move(targetVector.normalized * (character.characterStats.moveSpeed * Time.deltaTime));
+                character.MoveTo(destination);
             }
         }
 

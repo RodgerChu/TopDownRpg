@@ -9,11 +9,15 @@ namespace GameCore.Fight.Character
         Hero,
         Enemy,
     }
-    
-    public interface ICharacter
+
+    public interface IMovable
     {
-        CharacterType characterType { get; }
-        CharacterController characterController { get; }
+        Vector2 position { get; }
+        void MoveTo(Vector2 destination);
+    }
+    
+    public interface ICharacter: IMovable
+    {
         CharacterStats characterStats { get; }
         void TransitionToState(BaseState state);
     }

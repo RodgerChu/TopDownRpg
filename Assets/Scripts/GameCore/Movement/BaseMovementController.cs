@@ -9,7 +9,6 @@ public class BaseMovementController: MonoBehaviour
     [Inject] private IMovementDestinationProvider m_movementDestinationProvider;
     [Inject] private CharacterController m_controller;
 
-
     public void Update()
     {
         var destination = m_movementDestinationProvider.GetDestination();
