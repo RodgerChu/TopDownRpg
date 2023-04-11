@@ -1,12 +1,19 @@
 namespace GameCore.Fight.Character.Stats
 {
-    public class CharacterStats
+    public enum CharacterClassType
     {
-        public float moveSpeed;
-        public float health;
-        public float attackRange;
-        public float attackPower;
-        public float abilityPower;
-        public int armor;
+        Tank,
+        MeleeWarrior,
+        RangeWarrior,
+        Mage
+    }
+    
+    public enum CharacterStatType
+    {
+        MoveSpeed, 
+        Health,
+        AttackRange,
+        AttackPower,
+        Armor
     }
 }

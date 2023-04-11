@@ -1,4 +1,5 @@
 using GameCore.Fight.Character;
+using GameCore.Fight.Character.Stats;
 using UnityEngine;
 using Utils;
 
@@ -12,7 +13,7 @@ namespace GameCore.Fight.AI
         public override void OnStateEnter(ICharacter character)
         {
             m_targetEnemy = m_enemiesLocator.GetNearestEnemy(character);
-            m_characterAttackRangeSqr = character.characterStats.attackRange;
+            m_characterAttackRangeSqr = character.characterStats[CharacterStatType.AttackRange] * character.characterStats[CharacterStatType.AttackRange];
             m_squadPositionsProvider.ReleasePosition(character);
         }
 

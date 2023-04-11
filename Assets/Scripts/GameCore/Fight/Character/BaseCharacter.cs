@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GameCore.Fight.AI;
 using GameCore.Fight.Character.Stats;
 using GameCore.Pooling;
@@ -12,16 +13,9 @@ namespace GameCore.Fight.Character
         [Inject] private Pool<BaseState> m_statesPool;
 
         [SerializeField] private AIPath m_aiPath;
-        
 
         private BaseState m_currentState;
         private Transform m_cachedTransform;
-        
-        public CharacterStats characterStats { get; } = new()
-        {
-            moveSpeed = 4f
-        };
-
         private void Awake()
         {
             m_currentState = m_statesPool.Get<IdleState>();
@@ -32,6 +26,9 @@ namespace GameCore.Fight.Character
         {
             m_currentState.OnUpdate(this);
         }
+
+        public Dictionary<CharacterStatType, float> characterStats { get; } =
+            new Dictionary<CharacterStatType, float>();
 
         public void TransitionToState(BaseState state)
         {

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GameCore.Fight.AI;
 using GameCore.Fight.Character.Stats;
 using UnityEngine;
@@ -18,7 +19,7 @@ namespace GameCore.Fight.Character
     
     public interface ICharacter: IMovable
     {
-        CharacterStats characterStats { get; }
+        Dictionary<CharacterStatType, float> characterStats { get; }
         void TransitionToState(BaseState state);
     }
 }
