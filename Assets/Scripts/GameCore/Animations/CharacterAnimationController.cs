@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace GameCore.Animations
@@ -39,9 +40,17 @@ namespace GameCore.Animations
     {
         [SerializeField] private Animator m_animator;
 
+        public event Action<AnimationType> onAnimationCompleted;
+
         public void PlayAnimation(AnimationType animation)
         {
             m_animator.SetTrigger(animation.ToTriggerHash());
+        }
+
+        // Animation Event
+        public void AnimationFinished(AnimationType animation)
+        {
+            onAnimationCompleted?.Invoke(animation);
         }
     }
 }

@@ -1,3 +1,4 @@
+using GameCore.Animations;
 using GameCore.Fight.Character;
 using Utils;
 
@@ -7,6 +8,7 @@ namespace GameCore.Fight.AI
     {
         public override void OnStateEnter(ICharacter character)
         {
+            character.animationController.PlayAnimation(AnimationType.Idle);
         }
 
         protected override void UpdateInternal(ICharacter character)

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameCore.Animations;
 using GameCore.Fight.AI;
 using GameCore.Fight.Character.Stats;
 using GameCore.Pooling;
@@ -13,6 +14,11 @@ namespace GameCore.Fight.Character
         [Inject] private Pool<BaseState> m_statesPool;
 
         [SerializeField] private AIPath m_aiPath;
+        [SerializeField] private CharacterAnimationController m_animationController;
+
+        public CharacterAnimationController animationController => m_animationController;
+        public Dictionary<CharacterStatType, float> characterStats { get; } =
+            new Dictionary<CharacterStatType, float>();
 
         private BaseState m_currentState;
         private Transform m_cachedTransform;
@@ -26,9 +32,6 @@ namespace GameCore.Fight.Character
         {
             m_currentState.OnUpdate(this);
         }
-
-        public Dictionary<CharacterStatType, float> characterStats { get; } =
-            new Dictionary<CharacterStatType, float>();
 
         public void TransitionToState(BaseState state)
         {

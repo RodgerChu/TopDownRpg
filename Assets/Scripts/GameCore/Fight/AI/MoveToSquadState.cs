@@ -1,3 +1,4 @@
+using GameCore.Animations;
 using GameCore.Fight.Character;
 using GameCore.Movement;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace GameCore.Fight.AI
     
         public override void OnStateEnter(ICharacter character)
         {
+            character.animationController.PlayAnimation(AnimationType.Move);
         }
 
         protected override void UpdateInternal(ICharacter character)
@@ -25,6 +27,13 @@ namespace GameCore.Fight.AI
             }
             else
             {
+                var charTransform = character.animationController.transform;
+                var scale = charTransform.localScale;
+                if (scale.x < 0 && targetVector.x > 0 || scale.x > 0 && targetVector.x < 0)
+                {
+                    scale.x = -scale.x;
+                }
+                charTransform.localScale = scale;
                 character.MoveTo(destination);
             }
         }
