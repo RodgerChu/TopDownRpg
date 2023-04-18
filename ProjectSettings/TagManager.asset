@@ -14,8 +14,8 @@ TagManager:
   - Heroes
   - Enemies
   - Obstacles
-  - 
-  - 
+  - EnemiesDetector
+  - PlayerCharactersDetector
   - 
   - 
   - 

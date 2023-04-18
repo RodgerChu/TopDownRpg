@@ -9,24 +9,29 @@ using Zenject;
 
 namespace GameCore.Fight.Character
 {
-    public class BaseCharacter : MonoBehaviour, ICharacter
+    public abstract class BaseCharacter : MonoBehaviour, ICharacter
     {
-        [Inject] private Pool<BaseState> m_statesPool;
+        [Inject] protected Pool<BaseState> m_statesPool;
 
         [SerializeField] private AIPath m_aiPath;
         [SerializeField] private CharacterAnimationController m_animationController;
 
         public CharacterAnimationController animationController => m_animationController;
-        public Dictionary<CharacterStatType, float> characterStats { get; } =
-            new Dictionary<CharacterStatType, float>();
+        public Dictionary<CharacterStatType, float> characterStats { get; } = new Dictionary<CharacterStatType, float>
+        {
+            { CharacterStatType.AttackRange, 1f},
+            { CharacterStatType.MoveSpeed, 0.5f}
+        };
 
         private BaseState m_currentState;
         private Transform m_cachedTransform;
         private void Awake()
         {
-            m_currentState = m_statesPool.Get<IdleState>();
+            m_currentState = GetDefaultState();
             m_cachedTransform = transform;
         }
+
+        protected abstract BaseState GetDefaultState();
 
         private void Update()
         {

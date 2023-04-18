@@ -4,13 +4,18 @@ using UnityEngine;
 
 namespace GameCore.Fight.EnemiesLocator
 {
-    public class BaseEnemiesLocator : MonoBehaviour, IEnemiesLocator
+    public class EnemiesLocator : MonoBehaviour, IEnemiesLocator
     {
         private List<ICharacter> m_enemiesInSight = new();
 
         public bool HasEnemiesInSight()
         {
             return m_enemiesInSight.Count != 0;
+        }
+
+        public bool EnemyInSight(ICharacter character)
+        {
+            return m_enemiesInSight.Contains(character);
         }
 
         public ICharacter GetNearestEnemy(ICharacter client)
@@ -32,6 +37,22 @@ namespace GameCore.Fight.EnemiesLocator
             }
 
             return nearestEnemy;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.TryGetComponent<ICharacter>(out var character))
+            {
+                m_enemiesInSight.Add(character);
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.TryGetComponent<ICharacter>(out var character))
+            {
+                m_enemiesInSight.Remove(character);
+            }
         }
     }
 }

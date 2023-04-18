@@ -24,7 +24,13 @@ namespace GameCore.Fight.AI
             if (Vector2.SqrMagnitude(targetVector) <
                 m_characterAttackRangeSqr)
             {
-                //TODO: attack
+                character.TransitionToState(m_statesPool.Get<IdleState>());
+                return;
+            }
+
+            if (!m_enemiesLocator.EnemyInSight(m_targetEnemy))
+            {
+                character.TransitionToState(m_statesPool.Get<IdleState>());
                 return;
             }
 

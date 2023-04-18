@@ -17,7 +17,7 @@ namespace GameCore.Fight.AI
 
         public void OnUpdate(ICharacter character)
         {
-            if (m_attackModeProvider.attackMode == AttackMode.Aggressive && m_enemiesLocator.HasEnemiesInSight())
+            if (this is not AttackState && m_attackModeProvider.attackMode == AttackMode.Aggressive && m_enemiesLocator.HasEnemiesInSight())
             {
                 character.TransitionToState(m_statesPool.Get<AttackState>());
             }
