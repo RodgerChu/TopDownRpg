@@ -11,7 +11,7 @@ namespace GameCore.Fight.Character
 {
     public abstract class BaseCharacter : MonoBehaviour, ICharacter
     {
-        [Inject] protected Pool<BaseState> m_statesPool;
+        [Inject] protected Pool<BaseCharacterState> m_statesPool;
 
         [SerializeField] private AIPath m_aiPath;
         [SerializeField] private CharacterAnimationController m_animationController;
@@ -19,26 +19,31 @@ namespace GameCore.Fight.Character
         public CharacterAnimationController animationController => m_animationController;
         public Dictionary<CharacterStatType, float> characterStats { get; } = new Dictionary<CharacterStatType, float>
         {
-            { CharacterStatType.AttackRange, 1f},
-            { CharacterStatType.MoveSpeed, 0.5f}
+            {CharacterStatType.AttackRange, .5f},
+            {CharacterStatType.MoveSpeed, 5f},
+            {CharacterStatType.Health, 100f},
+            {CharacterStatType.Armor, 5},
+            {CharacterStatType.AttackPower, 5f}
         };
 
-        private BaseState m_currentState;
+        private BaseCharacterGlobalState m_currentState;
         private Transform m_cachedTransform;
+        
         private void Awake()
         {
             m_currentState = GetDefaultState();
             m_cachedTransform = transform;
+            m_aiPath.maxSpeed = characterStats[CharacterStatType.MoveSpeed];
         }
 
-        protected abstract BaseState GetDefaultState();
+        protected abstract BaseCharacterGlobalState GetDefaultState();
 
         private void Update()
         {
             m_currentState.OnUpdate(this);
         }
 
-        public void TransitionToState(BaseState state)
+        public void TransitionToState(BaseCharacterGlobalState state)
         {
             if (m_currentState != null)
             {

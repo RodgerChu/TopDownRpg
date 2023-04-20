@@ -4,7 +4,7 @@ using Utils;
 
 namespace GameCore.Fight.AI
 {
-    public class IdleState: BaseState
+    public class IdleGlobalState: BaseCharacterGlobalState
     {
         public override void OnStateEnter(ICharacter character)
         {
@@ -15,7 +15,7 @@ namespace GameCore.Fight.AI
         {
             if (m_enemiesLocator.HasEnemiesInSight())
             {
-                character.TransitionToState(m_statesPool.Get<AttackState>());
+                character.TransitionToState(m_statesPool.Get<AttackGlobalState>());
             }
             else
             {
@@ -26,7 +26,7 @@ namespace GameCore.Fight.AI
                     return;
                 }
                 
-                character.TransitionToState(m_statesPool.Get<MoveToSquadState>());
+                character.TransitionToState(m_statesPool.Get<MoveToSquadGlobalState>());
             }
         }
 

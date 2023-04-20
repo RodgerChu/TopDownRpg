@@ -7,7 +7,7 @@ using Zenject;
 
 namespace GameCore.Fight.AI
 {
-    public class MoveToSquadState: BaseState
+    public class MoveToSquadGlobalState: BaseCharacterGlobalState
     {
         [Inject] private SquadPositionsProvider m_destinationProvider;
     
@@ -23,7 +23,7 @@ namespace GameCore.Fight.AI
             var targetVector = destination - characterPosition;
             if (Vector2.SqrMagnitude(targetVector) <= 0.1f)
             {
-                character.TransitionToState(m_statesPool.Get<IdleState>());
+                character.TransitionToState(m_statesPool.Get<IdleGlobalState>());
             }
             else
             {

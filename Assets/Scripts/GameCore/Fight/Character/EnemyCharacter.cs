@@ -6,9 +6,9 @@ namespace GameCore.Fight.Character
     {
         
         
-        protected override BaseState GetDefaultState()
+        protected override BaseCharacterGlobalState GetDefaultState()
         {
-            return m_statesPool.Get<IdleState>();
+            return m_statesPool.Get<IdleGlobalState>();
         }
     }
 }

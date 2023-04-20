@@ -22,6 +22,6 @@ namespace GameCore.Fight.Character
     {
         CharacterAnimationController animationController { get; }
         Dictionary<CharacterStatType, float> characterStats { get; }
-        void TransitionToState(BaseState state);
+        void TransitionToState(BaseCharacterGlobalState state);
     }
 }

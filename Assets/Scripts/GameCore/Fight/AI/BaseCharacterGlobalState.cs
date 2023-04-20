@@ -6,20 +6,18 @@ using Zenject;
 
 namespace GameCore.Fight.AI
 {
-    public abstract class BaseState : ICharacterState
+    public abstract class BaseCharacterGlobalState : BaseCharacterState
     {
         [Inject] protected IEnemiesLocator m_enemiesLocator;
         [Inject] protected SquadPositionsProvider m_squadPositionsProvider;
         [Inject] protected AttackModeProvider m_attackModeProvider;
-        [Inject] protected Pool<BaseState> m_statesPool;
+        [Inject] protected Pool<BaseCharacterState> m_statesPool;
 
-        public abstract void OnStateEnter(ICharacter character);
-
-        public void OnUpdate(ICharacter character)
+        public override void OnUpdate(ICharacter character)
         {
-            if (this is not AttackState && m_attackModeProvider.attackMode == AttackMode.Aggressive && m_enemiesLocator.HasEnemiesInSight())
+            if (this is not AttackGlobalState && m_attackModeProvider.attackMode == AttackMode.Aggressive && m_enemiesLocator.HasEnemiesInSight())
             {
-                character.TransitionToState(m_statesPool.Get<AttackState>());
+                character.TransitionToState(m_statesPool.Get<AttackGlobalState>());
             }
             else
             {
@@ -28,7 +26,5 @@ namespace GameCore.Fight.AI
         }
 
         protected abstract void UpdateInternal(ICharacter character);
-
-        public abstract void OnStateLeave(ICharacter character);
     }
 }

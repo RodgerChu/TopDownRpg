@@ -14,7 +14,7 @@ namespace GameCore.Zenject
 
         public override void InstallBindings()
         {
-            Container.Bind<Pool<BaseState>>().AsSingle();
+            Container.Bind<Pool<BaseCharacterState>>().AsSingle();
             Container.Bind<AttackModeProvider>().AsSingle();
             Container.Bind<SquadPositionsProvider>().FromInstance(m_squadPositionsProvider).AsSingle();
             Container.Bind<IEnemiesLocator>().FromInstance(m_enemiesLocator).AsSingle();

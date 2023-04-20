@@ -16,7 +16,7 @@ namespace GameCore.Zenject
         {
             Container.Bind<IEnemiesLocator>().FromInstance(m_enemiesLocator).AsSingle();
             Container.Bind<SquadPositionsProvider>().FromInstance(m_holdPositionProvider).AsSingle();
-            Container.Bind<Pool<BaseState>>().AsSingle();
+            Container.Bind<Pool<BaseCharacterState>>().AsSingle();
             Container.Bind<AttackModeProvider>().AsSingle();
         }
     }
