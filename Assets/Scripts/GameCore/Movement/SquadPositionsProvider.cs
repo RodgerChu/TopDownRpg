@@ -5,7 +5,12 @@ using Utils;
 
 namespace GameCore.Movement
 {
-    public class SquadPositionsProvider : MonoBehaviour
+    public interface ICharacterDestinationProvider
+    {
+        Vector2 GetDestination(ICharacter character);
+    }
+    
+    public class SquadPositionsProvider : MonoBehaviour, ICharacterDestinationProvider
     {
         [Serializable]
         private struct PositionInfo
@@ -17,7 +22,7 @@ namespace GameCore.Movement
         [SerializeField]
         private PositionInfo[] m_points;
 
-        public Vector2 GetPosition(ICharacter character)
+        public Vector2 GetDestination(ICharacter character)
         {
             ref var freePoint = ref m_points[0];
             for (var index = 0; index < m_points.Length; index++)

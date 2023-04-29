@@ -41,6 +41,7 @@ namespace GameCore.Animations
         [SerializeField] private Animator m_animator;
 
         public event Action<AnimationType> onAnimationCompleted;
+        public AnimationType lastPlayerAnimation { get; private set; }
 
         public void PlayAnimation(AnimationType animation)
         {
@@ -50,6 +51,7 @@ namespace GameCore.Animations
         // Animation Event
         public void AnimationFinished(AnimationType animation)
         {
+            lastPlayerAnimation = animation;
             onAnimationCompleted?.Invoke(animation);
         }
     }

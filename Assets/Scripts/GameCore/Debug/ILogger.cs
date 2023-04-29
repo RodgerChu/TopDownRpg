@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace GameCore.Debug
 {
     public interface ILogger

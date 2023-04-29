@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameCore.AI.Tags;
 using GameCore.Fight.Character;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace GameCore.Fight.EnemiesLocator
 {
     public class EnemiesLocator : MonoBehaviour, IEnemiesLocator
     {
-        private List<ICharacter> m_enemiesInSight = new();
+        private HashSet<ICharacter> m_enemiesInSight = new();
 
         public bool HasEnemiesInSight()
         {
@@ -41,18 +42,23 @@ namespace GameCore.Fight.EnemiesLocator
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent<ICharacter>(out var character))
+            if (other.TryGetComponent<CharacterTag>(out var characterTag))
             {
-                m_enemiesInSight.Add(character);
+                m_enemiesInSight.Add(characterTag.GetCharacter());
             }
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.TryGetComponent<ICharacter>(out var character))
+            if (other.TryGetComponent<CharacterTag>(out var characterTag))
             {
-                m_enemiesInSight.Remove(character);
+                m_enemiesInSight.Remove(characterTag.GetCharacter());
             }
+        }
+
+        public Vector2 GetDestination(ICharacter character)
+        {
+            return GetNearestEnemy(character).position;
         }
     }
 }

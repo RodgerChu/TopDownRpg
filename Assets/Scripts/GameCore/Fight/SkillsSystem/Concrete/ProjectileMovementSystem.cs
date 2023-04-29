@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using GameCore.Fight.SkillsSystem.Abstractions;
 using UnityEngine;
 using Utils;
-using Zenject;
 
 namespace GameCore.Fight.SkillsSystem.Concrete
 {

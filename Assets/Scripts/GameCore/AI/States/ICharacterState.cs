@@ -1,6 +1,6 @@
 using GameCore.Fight.Character;
 
-namespace GameCore.Fight.AI
+namespace GameCore.AI.States
 {
     public interface ICharacterState
     {

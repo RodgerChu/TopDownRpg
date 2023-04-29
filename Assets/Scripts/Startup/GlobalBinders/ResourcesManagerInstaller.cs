@@ -1,6 +1,5 @@
 using ResourcesManagement.Abstraction;
 using ResourcesManagement.Concrete;
-using UnityEngine;
 using Zenject;
 
 public class ResourcesManagerInstaller : MonoInstaller

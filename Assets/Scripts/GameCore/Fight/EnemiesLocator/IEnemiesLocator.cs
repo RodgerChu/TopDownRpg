@@ -1,8 +1,9 @@
 using GameCore.Fight.Character;
+using GameCore.Movement;
 
 namespace GameCore.Fight.EnemiesLocator
 {
-    public interface IEnemiesLocator
+    public interface IEnemiesLocator: ICharacterDestinationProvider
     {
         bool HasEnemiesInSight();
         bool EnemyInSight(ICharacter character);

@@ -1,4 +1,4 @@
-namespace GameCore.Fight.AI
+namespace GameCore.AI.States
 {
     public enum AttackMode
     {
