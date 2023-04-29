@@ -189,6 +189,7 @@ namespace Pathfinding {
 		}
 
 		static void DownloadVersionInfo () {
+		/*
 			var script = AstarPath.active != null ? AstarPath.active : GameObject.FindObjectOfType(typeof(AstarPath)) as AstarPath;
 
 			if (script != null) {
@@ -225,6 +226,7 @@ namespace Pathfinding {
 #else
 			updateCheckDownload = new WWW(query);
 #endif
+			*/
 			lastUpdateCheck = System.DateTime.UtcNow;
 		}
 
