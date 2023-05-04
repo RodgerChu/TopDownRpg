@@ -8,7 +8,7 @@ namespace GameCore.AI.States
 {
     public class AttackGlobalState : BaseCharacterGlobalState
     {
-        private ICharacter m_targetEnemy;
+        public ICharacter targetEnemy { get; private set; }
 
         public void SetTarget(ICharacter target)
         {
@@ -17,7 +17,7 @@ namespace GameCore.AI.States
                 UnityEngine.Debug.LogError("ayaya");
             }
             
-            m_targetEnemy = target;
+            targetEnemy = target;
         }
         
         public override void OnStateEnter(ICharacter character)
@@ -31,12 +31,12 @@ namespace GameCore.AI.States
 
         public override void OnStateLeave(ICharacter character)
         {
-            if (m_targetEnemy is null)
+            if (targetEnemy is null)
             {
                 return;
             }
             
-            m_targetEnemy.characterStats[CharacterStatType.Health] -=
+            targetEnemy.characterStats[CharacterStatType.Health] -=
                 character.characterStats[CharacterStatType.AttackPower];
         }
 

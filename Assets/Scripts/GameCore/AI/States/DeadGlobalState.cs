@@ -9,19 +9,14 @@ namespace GameCore.AI.States
 {
     public class DeadGlobalState: BaseCharacterGlobalState
     {
-        private struct DeathTimer
-        {
-            public ICharacter character;
-            public float elapsedTime;
-        }
-
-        private List<DeathTimer> m_characterDeathTimers = new List<DeathTimer>(5);
+        private float m_elapsedDeadTimer;
         private float m_deadTimer;
         private Action<ICharacter> m_onDeadTimerElapsed;
 
         public override void OnStateEnter(ICharacter character)
         {
             character.animationController.PlayAnimation(AnimationType.Die);
+            m_elapsedDeadTimer = 0f;
         }
 
         public override void OnStateLeave(ICharacter character)
@@ -30,15 +25,15 @@ namespace GameCore.AI.States
 
         protected override void UpdateInternal(ICharacter character)
         {
-            var dt = Time.deltaTime;
-            for (int i = 0; i < m_characterDeathTimers.Count; i++)
+            if (m_elapsedDeadTimer >= m_deadTimer)
             {
-                var timerInfo = m_characterDeathTimers[i];
-                timerInfo.elapsedTime += dt;
-                if (timerInfo.elapsedTime >= m_deadTimer)
-                {
-                    m_onDeadTimerElapsed(timerInfo.character);
-                }
+                return;
+            }
+            
+            m_elapsedDeadTimer += Time.deltaTime;
+            if (m_elapsedDeadTimer >= m_deadTimer)
+            {
+                m_onDeadTimerElapsed(character);
             }
         }
 

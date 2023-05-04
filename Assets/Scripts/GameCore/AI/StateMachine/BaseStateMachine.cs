@@ -102,7 +102,7 @@ public abstract class BaseStateMachine
         }, moveState));
         moveState.AddTransition(new StateTransitionCondition(character =>
         {
-            if (m_enemiesLocator.GetNearestEnemy(character) is null)
+            if (!m_enemiesLocator.HasEnemiesInSight())
             {
                 return false;
             }
@@ -125,6 +125,43 @@ public abstract class BaseStateMachine
         {
             moveState.SetDestination(m_squadPositionsProvider);
         }, moveState));
+        
+        attackState.AddTransition(new StateTransitionCondition(character =>
+        {
+            if (m_enemiesLocator.EnemyInSight(attackState.targetEnemy) || !m_enemiesLocator.HasEnemiesInSight())
+            {
+                return false;
+            }
+
+            var nearestEnemy = m_enemiesLocator.GetNearestEnemy(character);
+            var vectorToEnemy = nearestEnemy.position - character.position;
+            var sqrLength = vectorToEnemy.sqrMagnitude;
+            var characterAttackRangeSqr = character.characterStats[CharacterStatType.AttackRange] *
+                                          character.characterStats[CharacterStatType.AttackRange];
+            return sqrLength >= characterAttackRangeSqr;
+        }, character =>
+        {
+            moveState.SetDestination(m_enemiesLocator);
+        }, moveState));
+        
+        attackState.AddTransition(new StateTransitionCondition(character =>
+        {
+            if (m_enemiesLocator.EnemyInSight(attackState.targetEnemy) || !m_enemiesLocator.HasEnemiesInSight())
+            {
+                return false;
+            }
+            
+            var vectorToEnemy = m_enemiesLocator.GetNearestEnemy(character).position - character.position;
+            var sqrLength = vectorToEnemy.sqrMagnitude;
+            var characterAttackRangeSqr = character.characterStats[CharacterStatType.AttackRange] *
+                                          character.characterStats[CharacterStatType.AttackRange];
+            return character.animationController.lastPlayerAnimation != AnimationType.Attack && 
+                   sqrLength <= characterAttackRangeSqr;
+        }, character =>
+        {
+            attackState.SetTarget(m_enemiesLocator.GetNearestEnemy(character));
+        }, attackState));
+        
         attackState.AddTransition(new StateTransitionCondition(character =>
         {
             return character.animationController.lastPlayerAnimation == AnimationType.Attack;
@@ -132,6 +169,7 @@ public abstract class BaseStateMachine
         {
             
         }, idleState));
+        
         InstallAdditionalStates(new List<BaseCharacterGlobalState>(3)
         {
             idleState,

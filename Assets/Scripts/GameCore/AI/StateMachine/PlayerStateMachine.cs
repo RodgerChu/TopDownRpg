@@ -21,6 +21,8 @@ namespace GameCore.AI.StateMachine
             
             var deadState = new DeadGlobalState(new List<StateTransitionCondition>(0), 5f, character =>
             {
+                character.characterStats[CharacterStatType.Health] = 100f;
+                
                 var squadPosition = m_squadPositionsProvider.GetDestination(character);
                 character.TeleportTo(squadPosition);
                 character.TransitionToState(idleState);
