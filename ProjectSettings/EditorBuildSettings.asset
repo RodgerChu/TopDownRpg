@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StatesTest.unity
     guid: 219e2fdddadba5e469dc73d84558906b
   - enabled: 1
-    path: Assets/Scenes/TownScene.unity
+    path: Assets/Scenes/CoreMechanicsTest.unity
     guid: 313f826003d4e0e4ea11e444c78cb543
   - enabled: 1
     path: Assets/Scenes/GlobalMapScene.unity
