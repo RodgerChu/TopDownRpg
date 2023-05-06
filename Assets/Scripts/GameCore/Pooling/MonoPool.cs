@@ -14,6 +14,7 @@ namespace GameCore.Pooling
         public MonoPool()
         {
             var poolParent = new GameObject("MonoPool_" + typeof(TBase).Name);
+            Object.DontDestroyOnLoad(poolParent);
             m_parent = poolParent.transform;
         }
 
@@ -21,9 +22,15 @@ namespace GameCore.Pooling
         {
             if (m_pool.Count > 0)
             {
-                var item = m_pool[0];
-                m_pool.RemoveAt(0);
-                return item.GetComponent<TConcrete>();
+                for (var index = 0; index < m_pool.Count; index++)
+                {
+                    var poolable = m_pool[index];
+                    if (poolable.TryGetComponent<TConcrete>(out var tComponent))
+                    {
+                        m_pool.RemoveAt(index);
+                        return tComponent;
+                    }
+                }
             }
 
             return m_container.InstantiatePrefabForComponent<TConcrete>(prefab);
