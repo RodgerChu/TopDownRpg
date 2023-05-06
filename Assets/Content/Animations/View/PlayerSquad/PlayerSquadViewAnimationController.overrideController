@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PlayerSquadViewAnimationController
+  m_Controller: {fileID: 9100000, guid: 761d6823479a5e140af33da8cc83da1c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 14057fb5c3e71df4ab456c6086857bed, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9427e14d8660ff6458afcf8b7fe4efd2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 19e29c6afc2c5e44098942923f984237, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d8b10199552c16c44b8940da1d8aa8b1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b715fe885c45d7c4382144199527df90, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c3417b185676f2e4bb7a0f2b7dd4ad07, type: 2}
