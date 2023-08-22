@@ -8,7 +8,7 @@ using Zenject;
 
 namespace UI
 {
-    public class ViewsManager
+    public class ViewSystem
     {
         [Inject] private Canvas m_canvas;
         [Inject] private ViewCollection m_viewCollection;

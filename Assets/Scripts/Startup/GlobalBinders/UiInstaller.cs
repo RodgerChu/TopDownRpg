@@ -17,7 +17,7 @@ namespace Startup.GlobalBinders
             Container.Bind<Canvas>().FromInstance(m_canvas).AsSingle();
             Container.Bind<MonoPool<BaseView>>().To<MonoPool<BaseView>>().AsSingle();
             Container.Bind<ViewCollection>().FromInstance(m_viewCollection).AsSingle();
-            Container.Bind<ViewsManager>().To<ViewsManager>().AsSingle();
+            Container.Bind<ViewSystem>().To<ViewSystem>().AsSingle();
         }
     }
 }

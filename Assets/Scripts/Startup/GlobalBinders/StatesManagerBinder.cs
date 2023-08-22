@@ -1,3 +1,4 @@
+using GameCore.Systems.GameState;
 using States;
 using Zenject;
 
@@ -7,8 +8,8 @@ namespace Startup.GlobalBinders
     {
         public override void InstallBindings()
         {
-            var inst = Container.Instantiate<StatesManager>();
-            Container.Bind<StatesManager>()
+            var inst = Container.Instantiate<GameStateSystem>();
+            Container.Bind<GameStateSystem>()
                 .FromInstance(inst)
                 .AsSingle();
         }

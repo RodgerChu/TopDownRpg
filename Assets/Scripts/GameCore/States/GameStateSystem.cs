@@ -1,14 +1,14 @@
 using System;
 using States.Abstraction;
 
-namespace States
+namespace GameCore.Systems.GameState
 {
-    public class StatesManager
+    public class GameStateSystem
     {
         private readonly Action<BaseState> m_stateReadyForActivationHandler;
         private readonly Action<BaseState> m_additionalStateReadyForActivationHandler;
 
-        public StatesManager()
+        public GameStateSystem()
         {
             m_stateReadyForActivationHandler = StateReadyForActivationHandler;
             m_additionalStateReadyForActivationHandler = AdditionalStateReadyForActivationHandler;

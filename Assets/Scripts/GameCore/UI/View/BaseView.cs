@@ -11,7 +11,7 @@ namespace UI.View
     {
         [SerializeField] protected ViewAnimationController m_viewAnimationController;
 
-        [Inject] protected ViewsManager m_viewsManager;
+        [Inject] protected ViewSystem viewSystem;
         
         public void Show()
         {

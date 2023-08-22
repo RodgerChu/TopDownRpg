@@ -1,4 +1,5 @@
 using GameCore.Pooling;
+using GameCore.Systems.GameState;
 using States;
 using States.Abstraction;
 using States.Concrete;
@@ -9,12 +10,12 @@ namespace UI
 {
     public class ToCityButton : MonoBehaviour
     {
-        [Inject] private StatesManager m_statesManager;
+        [Inject] private GameStateSystem m_gameStateSystem;
         [Inject] private Pool<BaseState> m_statesPool;
 
         public void OnButtonClick()
         {
-            m_statesManager.SwitchTo(m_statesPool.Get<TownState>());
+            m_gameStateSystem.SwitchTo(m_statesPool.Get<TownState>());
         }
     }
 }

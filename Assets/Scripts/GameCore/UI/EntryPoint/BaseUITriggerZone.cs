@@ -15,7 +15,7 @@ namespace UI.EntryPoint
     {
         [SerializeField] private Transform m_notificatorPositionOrigin;
         
-        [Inject] private ViewsManager m_viewsManager;
+        [Inject] private ViewSystem m_viewSystem;
         [Inject] private Canvas m_canvas;
 
         private RectTransform m_canvasTransform;
@@ -37,7 +37,7 @@ namespace UI.EntryPoint
             
             if (col.gameObject.TryGetComponent(out CharacterTag _))
             {
-                m_shownView = m_viewsManager.Show<TNotificator>();
+                m_shownView = m_viewSystem.Show<TNotificator>();
                 m_shownView.onNotificatorClick += m_onNotificatorClick;
                 var globalPosition = m_notificatorPositionOrigin.position.XY();
                 var viewportPosition = Camera.main.WorldToViewportPoint(globalPosition);
@@ -57,14 +57,14 @@ namespace UI.EntryPoint
             if (col.gameObject.TryGetComponent(out CharacterTag _))
             {
                 m_shownView.onNotificatorClick -= m_onNotificatorClick;
-                m_viewsManager.Hide(m_shownView);
+                m_viewSystem.Hide(m_shownView);
                 m_shownView = null;
             }
         }
 
         private void OnNotificatorClick()
         {
-            m_viewsManager.Show<TView>();
+            m_viewSystem.Show<TView>();
         }
     }
 }

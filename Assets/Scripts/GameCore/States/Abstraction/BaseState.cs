@@ -8,7 +8,7 @@ namespace States.Abstraction
     public abstract class BaseState
     {
         [Inject] protected BaseSceneLoader m_sceneLoader;
-        [Inject] protected ViewsManager m_viewManager;
+        [Inject] protected ViewSystem m_viewManager;
 
         public virtual void PrepareForActivation(Action<BaseState> onReady)
         {

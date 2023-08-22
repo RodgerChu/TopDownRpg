@@ -15,7 +15,7 @@
         // UNITY EVENTS
         public void OnCloseButtonClickHandle()
         {
-            m_viewsManager.Hide(this);
+            viewSystem.Hide(this);
         }
     }
 }
