@@ -1,8 +1,8 @@
 using GameCore.Pooling;
-using GameCore.Systems.GameState;
+using GameCore.States;
+using GameCore.States.Concrete;
 using States;
 using States.Abstraction;
-using States.Concrete;
 using UnityEngine;
 using Zenject;
 

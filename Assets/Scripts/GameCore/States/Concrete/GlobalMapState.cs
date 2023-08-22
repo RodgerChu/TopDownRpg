@@ -2,7 +2,7 @@ using System;
 using ResourcesManagement.Concrete;
 using States.Abstraction;
 
-namespace States.Concrete
+namespace GameCore.States.Concrete
 {
     public class GlobalMapState: BaseState
     {

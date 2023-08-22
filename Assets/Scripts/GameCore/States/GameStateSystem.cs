@@ -1,7 +1,7 @@
 using System;
 using States.Abstraction;
 
-namespace GameCore.Systems.GameState
+namespace GameCore.States
 {
     public class GameStateSystem
     {

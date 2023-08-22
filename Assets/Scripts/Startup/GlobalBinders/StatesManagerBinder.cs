@@ -1,4 +1,4 @@
-using GameCore.Systems.GameState;
+using GameCore.States;
 using States;
 using Zenject;
 

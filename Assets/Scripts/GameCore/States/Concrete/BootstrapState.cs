@@ -2,7 +2,7 @@
 using States.Abstraction;
 using UI.View.Bootstrap;
 
-namespace States.Concrete
+namespace GameCore.States.Concrete
 {
     public class BootstrapState: BaseState
     {
