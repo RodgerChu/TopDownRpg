@@ -9,7 +9,9 @@ using Zenject;
 
 namespace UI.EntryPoint
 {
-    public abstract class BaseUITriggerZone<TView, TNotificator>: MonoBehaviour where TView: BaseView, new() where TNotificator: InteractableBuildingNotificator, new()
+    public abstract class BaseUITriggerZone<TView, TNotificator>: MonoBehaviour 
+        where TView: BaseView, new() 
+        where TNotificator: InteractableBuildingNotificator, new()
     {
         [SerializeField] private Transform m_notificatorPositionOrigin;
         
@@ -19,6 +21,7 @@ namespace UI.EntryPoint
         private RectTransform m_canvasTransform;
         private TNotificator m_shownView;
         private Action m_onNotificatorClick;
+        
         private void Awake()
         {
             m_canvasTransform = ((RectTransform)m_canvas.transform);

@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
+using Cysharp.Threading.Tasks;
 using Meta.Loaders.Json;
 using Zenject;
 
@@ -15,7 +17,7 @@ namespace Startup.GlobalBinders
                 if (!type.IsAbstract && typeof(IJsonMetaLoader).IsAssignableFrom(type))
                 {
                     var loader = Activator.CreateInstance(type) as BaseMetaLoader;
-                    loader.Load(meta =>
+                    loader.Load((meta, container) =>
                     {
                         container.Bind(meta.GetType()).FromInstance(meta);
                     }, container);

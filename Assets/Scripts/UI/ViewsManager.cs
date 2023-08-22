@@ -17,7 +17,7 @@ namespace UI
 
         private List<BaseView> m_loadedViews = new List<BaseView>();
 
-        public T Show<T>(bool addToStack = true) where T : BaseView, new()
+        public T Show<T>() where T : BaseView, new()
         {
             foreach (var viewPrefab in m_viewCollection.viewPrefabs)
             {

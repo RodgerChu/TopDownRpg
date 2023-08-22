@@ -18,7 +18,7 @@ namespace Meta.Data
         [ProtoMember(4)]
         public string prefab;
         [ProtoMember(5)]
-        public List<int> skills = new List<int>();
+        public List<string> skills = new List<string>();
         [ProtoMember(6)]
         public Dictionary<CharacterStatType, float> characterStats = new Dictionary<CharacterStatType, float>();
         [ProtoMember(7)]
@@ -29,9 +29,9 @@ namespace Meta.Data
     [ProtoContract]
     public class CharactersData
     {
-        [ProtoMember(1)] 
-        public List<GameCharacter> characters = new List<GameCharacter>();
-
+        [ProtoMember(1)]
         public const int maxCharactersInSquad = 4;
+        [ProtoMember(2)] 
+        public GameCharacter[] characters = new GameCharacter[0];
     }
 }

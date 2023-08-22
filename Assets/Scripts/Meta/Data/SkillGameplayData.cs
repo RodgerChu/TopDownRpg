@@ -6,7 +6,6 @@ namespace Meta.Data
 {
     public class SkillGameplayData
     {
-        public int id;
         public IProjectileMoveSystem moveSystem;
         public GameObject projectilePrefab;
         public IProjectileHitEffect[] hitEffects;
@@ -18,6 +17,6 @@ namespace Meta.Data
 
     public class SkillGameplayDataContainer
     {
-        public List<SkillGameplayData> skills = new List<SkillGameplayData>();
+        public Dictionary<string, SkillGameplayData> skills = new Dictionary<string, SkillGameplayData>();
     }
 }

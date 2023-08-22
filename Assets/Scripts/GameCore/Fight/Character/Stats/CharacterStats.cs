@@ -14,6 +14,7 @@ namespace GameCore.Fight.Character.Stats
         Health,
         AttackRange,
         AttackPower,
+        AttackSpeed,
         Armor
     }
 }

@@ -1,0 +1,26 @@
+{
+  "skills": [
+    {
+      "id": "Slash",
+      "projectilePrefab": "SlashEffect",
+      "movementType": "NO",
+      "movementEffects": [],
+      "hitEffects": [],
+      "range": 5,
+      "cooldown": 15,
+      "projectileFireLogic": "Hit",
+      "damageMultiplier": 3
+    },
+    {
+      "id": "Multihit",
+      "projectilePrefab": "MultihitEffect",
+      "movementType": "NO",
+      "movementEffects": [],
+      "hitEffects": [],
+      "range": 5,
+      "cooldown": 15,
+      "projectileFireLogic": "Hit",
+      "damageMultiplier": 6
+    }
+  ]
+}

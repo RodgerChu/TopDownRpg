@@ -1,0 +1,24 @@
+{
+  "maxCharactersInSquad": 1,
+  "characters": [
+    {
+      "id" : "1",
+      "rarity" : "Common",
+      "name" :  "Daygo",
+      "prefab" : "Daygo",
+      "skills" :  [
+        "Slash",
+        "Multihit"
+      ],
+      "characterStats" : {
+        "MoveSpeed": 5,
+        "Health": 100,
+        "AttackRange": 3,
+        "AttackPower": 5,
+        "AttackSpeed": 1,
+        "Armor": 5
+      },
+      "characterClass" : "MeleeWarrior"
+    }
+  ]
+}

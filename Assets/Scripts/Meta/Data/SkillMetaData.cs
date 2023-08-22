@@ -11,7 +11,7 @@ namespace Meta.Data
     public class SkillMetaData
     {
         [ProtoMember(1)]
-        public int id;
+        public string id;
         [ProtoMember(2)]
         public string projectilePrefab;
         [ProtoMember(3)]
@@ -26,6 +26,8 @@ namespace Meta.Data
         public float cooldown;
         [ProtoMember(8)] 
         public string projectileFireLogic;
+        [ProtoMember(9)] 
+        public float damageMultiplier;
     }
 
     [Serializable]
